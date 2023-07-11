@@ -2,9 +2,7 @@ body, html {
     width:100%;
     height:100%;
     margin:0;
-    overflow:hidden;
-    background-color:black;
-    font-size:12pt;
+    background-color:blue;
 }
 .planet {
     position:absolute;
@@ -108,7 +106,10 @@ li {
     }
 }
 @media (pointer:coarse) {
-    html {
-        font-size:32px;
+    li {
+        font-size:2rem;
+    }
+    body, html {
+        background-color:red;
     }
 }
