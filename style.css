@@ -106,3 +106,8 @@ li {
         aspect-ratio:1;
     }
 }
+@media (hover: none) and (pointer: coarse) {
+    html {
+        font-size:18px;
+    }
+}
