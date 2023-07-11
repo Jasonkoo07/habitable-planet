@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<script src = "script.js"></script>
+</head>
+<body>
+    <div class="grid">
+        <div id="imageBox">
+            <button class="planet" name="sun" style="width:16%; left:50.15%; top:51.5%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="mercury" style="width:4.8%; left:61.25%; top:52%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="venus" style="width:7%; left:33%; top:56%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="earth" style="width:7%; left:71.6%; top:40%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="mars" style="width:7%; left:42%; top:70%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="jupiter" style="width:11%; left:75.5%; top:58.5%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="saturn" style="width:10%; left:18%; top:43%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="uranus" style="width:8%; left:81.2%; top:19%" onclick="printInformation(this.name)"></button>
+            <button class="planet" name="neptune" style="width:8.5%; left:10%; top:82%" onclick="printInformation(this.name)"></button>
+        </div>
+        <div id="info">
+            <button id="closeButton" onclick="printInformation(null)">X</button>
+            <h1 id="title">제목</h1>
+            <img id="image" src="planetImage/sun.jpg">
+            <ui id="list">
+                <li>온도 <button class="change" onclick="changeTemperature(this)">(K)</button></li>
+                <li>지름</li>
+                <li>중력</li>
+                <li>표면 구성</li>
+                <li>공전 주기</li>
+                <li>자전 주기</li>
+            </ui>
+        </div>
+    </div>
+</body>
+</html>
