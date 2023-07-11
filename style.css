@@ -107,7 +107,7 @@ li {
     }
 }
 @media (pointer: coarse) {
-    html {
-        font-size:24pt;
+    html, button {
+        font-size:18px;
     }
 }
