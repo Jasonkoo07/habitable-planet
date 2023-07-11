@@ -38,6 +38,7 @@ body, html {
 }
 li {
     word-break:keep-all;
+    text-size:1rem;
 }
 #closeButton {
     color:gray;
