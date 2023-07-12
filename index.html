@@ -24,21 +24,19 @@
                 <button class="planet" name="neptune" style="width:8.5%; left:10%; top:82%" onclick="printInformation(this.name)"></button>
             </div>
             <div id="info">
-                <button id="closeButton" onclick="printInformation(null)">X</button>
-                <div>
-                    <h1 id="title">제목</h1>
-                    <img id="image" src="">
-                    <ui id="list">
-                        <li>온도</li>
-                        <li>지름</li>
-                        <li>중력</li>
-                        <li>구성 성분</li>
-                        <li>공전 주기</li>
-                        <li>자전 주기</li>
-                        <li>추가 정보</li>
-                        <li>거주 가능성</li>
-                    </ui>
-                </div>
+                <button id="closeButton" style="position:fixed" onclick="printInformation(null)">X</button>
+                <h1 id="title" style="margin-top:2rem">제목</h1>
+                <img id="image" src="">
+                <ui id="list">
+                    <li>온도</li>
+                    <li>지름</li>
+                    <li>중력</li>
+                    <li>구성 성분</li>
+                    <li>공전 주기</li>
+                    <li>자전 주기</li>
+                    <li>추가 정보</li>
+                    <li>거주 가능성</li>
+                </ui>
             </div>
         </div>
     </body>
