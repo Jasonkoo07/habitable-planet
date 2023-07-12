@@ -163,7 +163,7 @@ window.onload = function () {
 		closeTop = "calc(-100vw * 798 / 1317 + 100vh)";
 	}
 	else if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) {
-		openLeft = "-50vw";
+		openLeft = "-25vw";
 		openTop = "0";
 		closeLeft = "0";
 		closeTop = "0";
@@ -183,7 +183,7 @@ window.onresize = function() {
 		closeTop = "calc(-100vw * 798 / 1317 + 100vh)";
 	}
 	else if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) {
-		openLeft = "-50vw";
+		openLeft = "-25vw";
 		openTop = "0";
 		closeLeft = "0";
 		closeTop = "0";
