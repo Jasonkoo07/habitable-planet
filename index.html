@@ -9,6 +9,8 @@
 <body>
     <div class="grid">
         <div id="imageBox">
+            <img class="deco" src="spaceship.png" style="width:4%; transform:rotate(-50deg); left:73%; top:25%" onclick="showAstronaut()">
+            <img class="deco" id="astronaut" src="astronaut.png" style="width:4%; transform:rotate(10deg); left:73%; top:22%">
             <button class="planet" name="sun" style="width:16%; left:50.15%; top:51.5%" onclick="printInformation(this.name)"></button>
             <button class="planet" name="mercury" style="width:4.8%; left:61.25%; top:52%" onclick="printInformation(this.name)"></button>
             <button class="planet" name="venus" style="width:7%; left:33%; top:56%" onclick="printInformation(this.name)"></button>
@@ -30,6 +32,7 @@
                 <li>구성 성분</li>
                 <li>공전 주기</li>
                 <li>자전 주기</li>
+                <li>추가 정보</li>
                 <li>거주 가능성</li>
             </ui>
         </div>
