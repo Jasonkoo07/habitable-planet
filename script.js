@@ -11,7 +11,7 @@ var sun = {
 	rotation_period: null,
 	detail_title: "태양 플레어",
 	detail_content: "태양 표면 위의 거대한 폭발 현상, 몇 분 만에 물질을 수백만 도로 가열, 10억 메가톤 이상의 에너지 방출",
-	habitability: "높은 온도와 중력으로 인해 인간 거주 불가"
+	habitability: "높은 온도와 중력, 태양 활동으로 인한 방사능으로 인해 인간 거주 불가"
 };
 var mercury = {
 	name: "Mercury",
