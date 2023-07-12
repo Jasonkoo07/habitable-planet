@@ -6,9 +6,9 @@ var sun = {
 	celsius_temperature: "중심부: 1500만°C, 표면 온도: 5726°C",
 	diameter: "139만km (지구 지름의 109배)",
 	gravity: "274m/s² (지구 중력의 27배)",
-	composition: "X",
-	orbital_period: "X",
-	rotation_period: "X"
+	composition: "test",
+	orbital_period: "test",
+	rotation_period: "test"
 };
 var mercury = {
 	name: "Mercury",
@@ -38,11 +38,11 @@ var earth = {
 	name: "Earth",
 	korean_name: "지구",
 	image: "planetImage/earth.jpg",
-	absolute_temperature: "X",
-	celsius_temperature: "X",
+	absolute_temperature: "test",
+	celsius_temperature: "test",
 	diameter: "12,742km",
 	gravity: "9.807m/s²",
-	composition: "X",
+	composition: "test",
 	orbital_period: "365일",
 	rotation_period: "1일"
 };
