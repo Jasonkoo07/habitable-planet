@@ -198,6 +198,7 @@ function openTab(a) {
 		list[5].innerHTML = "<strong>자전 주기</strong> " + selected.rotation_period;
 		list[6].innerHTML = "<strong>" + selected.detail_title + "</strong> " + selected.detail_content;
 		list[7].innerHTML = "<strong>거주 가능성</strong> " + selected.habitability;
+		astronaut.style.opacity = 0;
 	}
 	else {
 		list[0].style.display = "inline-block";
