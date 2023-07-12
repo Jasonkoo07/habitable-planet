@@ -142,6 +142,7 @@ var image;
 var list;
 var temperature = "absolute"
 var astronaut;
+var vh;
 
 window.onload = function () {
 	infoTab = document.getElementById("info");
@@ -149,6 +150,7 @@ window.onload = function () {
 	image = document.getElementById("image");
 	list = document.getElementById("list").children;
 	astronaut = document.getElementById("astronaut");
+	document.getElementById("grid").style.height = "calc(100vh - " + window.innerHeight + "px)";
 }
 window.onresize = function() {
 	infoTab.style.left = "0";
