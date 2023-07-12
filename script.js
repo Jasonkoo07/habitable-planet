@@ -1,3 +1,4 @@
+//행성 및 인간 정보
 var sun = {
 	name: "Sun",
 	korean_name: "태양",
@@ -134,66 +135,42 @@ var human = {
 	korean_name: "인간",
 	image: "astronaut.png"
 }
+
+//정보 목록
 var planetInfo = new Map([
 	["sun", sun],["mercury", mercury],["venus", venus],["earth", earth],["mars", mars],
 	["jupiter", jupiter],["saturn", saturn],["uranus", uranus],["neptune", neptune], ["human", human]
 ]);
-var selected;
+
+//화면 구성요소
 var infoTab;
 var title;
 var image;
 var list;
 var astronaut;
+
+//정보탭 위치
 var openLeft;
 var openTop;
 var closeLeft;
 var closeTop;
 
+var selected = null; //선택된 행성 및 인간
+var temperature = "absolute"; //온도 단위
+
+//변수 초기화
 window.onload = function () {
-	infoTab = document.getElementById("info");
+	infoTab = document.getElementById("infoTab");
 	title = document.getElementById("title");
 	image = document.getElementById("image");
 	list = document.getElementById("list").children;
 	astronaut = document.getElementById("astronaut");
-	temperature = "absolute";
-	if (matchMedia("all and (max-aspect-ratio:4/3)").matches) {
-		openLeft = "0";
-		openTop = "calc(-100vw * 798 / 1317 + 25vh)";
-		closeLeft = "0";
-		closeTop = "calc(-100vw * 798 / 1317 + 100vh)";
-	}
-	else if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) {
-		openLeft = "-25vw";
-		openTop = "0";
-		closeLeft = "0";
-		closeTop = "0";
-	}
-	else {
-		openLeft = "calc(-100vh * 1317 / 798 + 75vw)";
-		openTop = "0";
-		closeLeft = "calc(-100vh * 1317 / 798 + 100vw)";
-		closeTop = "0";
-	}
+	setInfoTabPosition();
 }
+
+//정보탭 위치 재설정
 window.onresize = function() {
-	if (matchMedia("all and (max-aspect-ratio:4/3)").matches) {
-		openLeft = "0";
-		openTop = "calc(-100vw * 798 / 1317 + 25vh)";
-		closeLeft = "0";
-		closeTop = "calc(-100vw * 798 / 1317 + 100vh)";
-	}
-	else if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) {
-		openLeft = "-25vw";
-		openTop = "0";
-		closeLeft = "0";
-		closeTop = "0";
-	}
-	else {
-		openLeft = "calc(-100vh * 1317 / 798 + 75vw)";
-		openTop = "0";
-		closeLeft = "calc(-100vh * 1317 / 798 + 100vw)";
-		closeTop = "0";
-	}
+	setInfoTabPosition();
 	if (selected == null) {
 		infoTab.style.left = closeLeft;
 		infoTab.style.top = closeTop;
@@ -204,7 +181,33 @@ window.onresize = function() {
 	}
 }
 
-function printInformation(a) {
+//정보탭 위치 변수 설정
+function setInfoTabPosition() {
+	//세로모드
+	if (matchMedia("(max-aspect-ratio:4/3)").matches) {
+		openLeft = "0";
+		openTop = "calc(-100vw * 798 / 1317 + 25vh)";
+		closeLeft = "0";
+		closeTop = "calc(-100vw * 798 / 1317 + 100vh)";
+	}
+	//태블릿 가로모드
+	else if (matchMedia("(max-aspect-ratio:1317/798)").matches) {
+		openLeft = "-25vw";
+		openTop = "0";
+		closeLeft = "0";
+		closeTop = "0";
+	}
+	//가로모드 (태블릿 제외)
+	else {
+		openLeft = "calc(-100vh * 1317 / 798 + 75vw)";
+		openTop = "0";
+		closeLeft = "calc(-100vh * 1317 / 798 + 100vw)";
+		closeTop = "0";
+	}
+}
+
+//행성 및 인간 선택 반응
+function showInformation(a) {
 	if (selected == planetInfo.get(a) || a == null) {
 		closeTab();
 	}
@@ -212,10 +215,14 @@ function printInformation(a) {
 		openTab(a);
 	}
 }
+
+//정보탭 열기
 function openTab(a) {
 	selected = planetInfo.get(a);
 	title.innerText = selected.korean_name + " " + selected.name;
 	image.src = selected.image;
+
+	//행성 선택시
 	if (a != "human") {
 		for (var i = 0; i < 8; i++) list[i].style.display = "inline-block";
 		if (selected.absolute_temperature == null || selected.celsius_temperature == null) list[0].style.display = "none";
@@ -226,6 +233,7 @@ function openTab(a) {
 		if (selected.rotation_period == null) list[5].style.display = "none";
 		if (selected.detail_title == null || selected.detail_content == null) list[6].style.display = "none";
 		if (selected.habitability == null) list[7].style.display = "none";
+
 		list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature()\">" + (temperature == "absolute" ? "(K)" : "(°C)") + "</button> " + (temperature == "absolute" ? selected.absolute_temperature : selected.celsius_temperature);
 		list[1].innerHTML = "<strong>지름</strong> " + selected.diameter;
 		list[2].innerHTML = "<strong>중력</strong> " + selected.gravity;
@@ -234,69 +242,74 @@ function openTab(a) {
 		list[5].innerHTML = "<strong>자전 주기</strong> " + selected.rotation_period;
 		list[6].innerHTML = "<strong>" + selected.detail_title + "</strong> " + selected.detail_content;
 		list[7].innerHTML = "<strong>거주 가능성</strong> " + selected.habitability;
+
 		astronaut.style.opacity = 0;
 	}
+	//인간 선택시
 	else {
 		list[0].style.display = "inline-block";
 		for (var i = 1; i < 8; i++) list[i].style.display = "none";
-		list[0].innerHTML = `<strong>방사능 피폭선량에 따른 증상</strong><br>
+
+		list[0].innerHTML =
+		`<strong>방사능 피폭선량에 따른 증상</strong>
 		<ul>
 		<li>2sv: 5%의 사람 사망</li>
 		<li>4sv: 30일간 50%사람 사망</li>
 		<li>6sv: 14일간 90%사람 사망</li>
 		<li>8sv: 100%의 사람 사망</li>
 		</ul>
-		<strong>인간이 버티는 온도(더위)</strong><br>
+		<strong>인간이 버티는 온도(더위)</strong>
 		<ul>
 		<li>습도가 높을 경우: 32°C가 넘어갈 경우 치명적인 온도</li>
 		<li>습도가 극단적으로 낮은 경우: 50°C가 되어야 치명적인 온도</li>
 		</ul>
-		<strong>인간이 버티는 온도(추위)</strong><br>
+		<strong>인간이 버티는 온도(추위)</strong>
 		<ul>
 		<li>인간의 체온이 33°C로 떨어질 경우 저체온증로 인한 사망 가능</li>
 		<li>인간의 체온이 30°C로 떨어질 경우 가사상태 => 사망</li>
 		<li>외부온도가 -47°C가 되면 얼굴에 얼음막 형성 => 동상</li>
 		</ul>
-		<strong>사람이 견딜 수 있는 중력가속도의 크기</strong><br>
+		<strong>사람이 견딜 수 있는 중력가속도의 크기</strong>
 		<ul>
 		<li>0.1초: 45G</li>
 		<li>1초: 10G</li>
 		<li>15초: 5G</li>
 		</ul>
-		<strong>사람 뼈가 견딜수 있는 무게</strong><br>
+		<strong>사람 뼈가 견딜수 있는 무게</strong>
 		<ul>
 		<li>in³(세제곱인치)당 8,626kg</li>
 		</ul>
 		`
 	}
+
 	infoTab.style.left = openLeft;
 	infoTab.style.top = openTop;
 }
+
+//정보탭 닫기
 function closeTab() {
 	selected = null;
 	astronaut.style.opacity = 0;
 	infoTab.style.left = closeLeft;
 	infoTab.style.top = closeTop;
 }
+
+//우주비행사 이미지 보이기/숨기기
+function showAstronaut() {
+	if (astronaut.style.opacity == 0) astronaut.style.opacity = 1;
+	else astronaut.style.opacity = 0;
+}
+
+//온도 단위 변경
 function changeTemperature() {
+	//현재 절대온도 (섭씨온도로 변경)
 	if (temperature == "absolute") {
 		temperature = "celsius";
 		list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature(this)\">(°C)</button> " + selected.celsius_temperature;
 	}
+	//현재 섭씨온도 (절대온도로 변경)
 	else {
 		temperature = "absolute"
 		list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature(this)\">(K)</button> " + selected.absolute_temperature;
-	}
-}
-function showAstronaut(a) {
-	if (a != "astronaut" || astronaut.style.opacity == 1) {
-		if (astronaut.style.opacity == 0) {
-			astronaut.style.opacity = 1;
-			openTab("human");
-		}
-		else {
-			astronaut.style.opacity = 0;
-			closeTab();
-		}
 	}
 }
