@@ -47,7 +47,7 @@ li {
     border-radius:5px;
 }
 #closeButton, #title, #image, li {
-    margin:0.5rem;
+    padding:0.5rem;
 }
 .change {
     height:1.5rem;
