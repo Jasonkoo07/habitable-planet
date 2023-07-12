@@ -61,7 +61,7 @@ li {
     padding:10px;
 }
 /*스마트폰, 태블릿 세로*/
-@media (max-aspect-ratio:1) {
+@media (max-aspect-ratio:4/3) {
     #imageBox {
         width:100vw;
         height:calc(100vw * 798 / 1317);
@@ -86,10 +86,11 @@ li {
     }
     #closeButton {
         width:100%;
+        height:2rem;
     }
 }
 /*태블릿 가로*/
-@media (min-aspect-ratio:1) and (max-aspect-ratio:1317/798) {
+@media (min-aspect-ratio:4/3) and (max-aspect-ratio:1317/798) {
     #imageBox {
         width:100vw;
         height:calc(100vw * 798 / 1317);
@@ -108,8 +109,8 @@ li {
         border-bottom-left-radius:10px;
     }
     #closeButton {
-        width:10%;
-        aspect-ratio:1;
+        width:2rem;
+        height:2rem;
     }
 }
 /*스마트폰 가로, PC*/
@@ -132,7 +133,7 @@ li {
         border-bottom-left-radius:10px;
     }
     #closeButton {
-        width:10%;
-        aspect-ratio:1;
+        width:2rem;
+        height:2rem;
     }
 }
