@@ -1,20 +1,19 @@
-body, html {
+html, body {
     width:100%;
     height:100%;
     margin:0;
     background-color:navy;
 }
-.planet, .deco {
+
+.infoButton {
     position:absolute;
 }
+
 .planet {
     opacity:0;
     aspect-ratio:1;
     border-radius:50%;
     transform:translate(-50%, -50%);
-}
-.deco {
-    transition: all ease-in-out 0.5s;
 }
 
 #grid {
@@ -24,44 +23,57 @@ body, html {
     overflow:hidden;
     margin:0;
 }
-#imageBox, #info {
+
+#imageBox, #infoTab {
     position:relative;
 }
+
 #imageBox {
     background-image:url("solarSystem.jpg");
     background-repeat:no-repeat;
 }
-#info {
+
+#infoTab {
+    display:grid;
+    grid-template-rows: auto 1fr;
     background-color:white;
     transition: all ease-in-out 0.5s;
+    overflow-y:auto;
+}
+
+#info {
+    margin:0.5rem;
     overflow-y:scroll;
 }
-#image {
-    width:50%;
-}
+
 li {
     word-break:keep-all;
     display:inline-block;
+    margin:0.5rem;
 }
+
 #closeButton {
     color:gray;
     border:0;
+    height:2rem;
 }
-#closeButton, #title, #image, li {
-    padding:0.5rem;
-}
-.change {
-    height:1.5rem;
-    aspect-ratio:2;
-}
+
 #image {
-    display: block;
+    display:block;
     margin-left:auto;
     margin-right:auto;
     border-style:solid;
     padding:1rem;
+    margin-bottom:1rem;
+    width:50%;
 }
-/*스마트폰, 태블릿 세로*/
+
+.change {
+    height:1.5rem;
+    aspect-ratio:2;
+}
+
+/*세로모드*/
 @media (max-aspect-ratio:4/3) {
     #imageBox {
         width:100vw;
@@ -71,28 +83,20 @@ li {
     #grid {
         grid-template-rows:1fr 1fr;
     }
-    #info {
+    #infoTab {
         top:calc(-100vw * 798 / 1317 + 100vh);
         height:75vh;
         border-top-left-radius:1%;
         border-top-right-radius:1%;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    #info::-webkit-scrollbar {
-        display: none;
     }
     #closeButton {
         width:100%;
-        height:2rem;
         border-top-left-radius:1%;
         border-top-right-radius:1%;
     }
-    #title {
-        margin-top:2rem;
-    }
 }
-/*태블릿 가로*/
+
+/*태블릿 가로모드*/
 @media (min-aspect-ratio:4/3) and (max-aspect-ratio:1317/798) {
     #imageBox {
         width:100vw;
@@ -102,7 +106,7 @@ li {
     #grid {
         grid-template-columns:1fr 1fr;
     }
-    #info {
+    #infoTab {
         left:0;
         width:25vw;
         border-top-left-radius:1%;
@@ -110,15 +114,12 @@ li {
     }
     #closeButton {
         width:2rem;
-        height:2rem;
         margin:0.5rem;
         border-radius:1%;
     }
-    #title {
-        margin-top:3rem;
-    }
 }
-/*스마트폰 가로, PC*/
+
+/*가로모드 (태블릿 제외)*/
 @media (min-aspect-ratio:1317/798) {
     #imageBox {
         width:calc(100vh * 1317 / 798);
@@ -128,7 +129,7 @@ li {
     #grid {
         grid-template-columns:1fr 1fr;
     }
-    #info {
+    #infoTab {
         left:calc(-100vh * 1317 / 798 + 100vw);
         width:25vw;
         border-top-left-radius:1%;
@@ -136,11 +137,7 @@ li {
     }
     #closeButton {
         width:2rem;
-        height:2rem;
         margin:0.5rem;
         border-radius:1%;
-    }
-    #title {
-        margin-top:3rem;
     }
 }
