@@ -237,6 +237,7 @@ function openTab(a) {
 }
 function closeTab() {
 	selected = null;
+	astronaut.style.opacity = 0;
 	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 100vh)";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 100vw)";
 }
