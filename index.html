@@ -11,32 +11,34 @@
     <body>
         <div id="grid">
             <div id="imageBox">
-                <img class="deco" id="spaceship" name="spaceship" src="spaceship.png" style="width:4%; transform:rotate(-50deg); left:73%; top:25%; border-radius:50%" onclick="showAstronaut(this.name)">
-                <img class="deco" id="astronaut" name="astronaut" src="astronaut.png" style="width:4%; transform:rotate(10deg); left:73%; top:22%; opacity:0" onclick="showAstronaut(this.name)">
-                <button class="planet" name="sun" style="width:16%; left:50.15%; top:51.5%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="mercury" style="width:4.8%; left:61.25%; top:52%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="venus" style="width:7%; left:33%; top:56%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="earth" style="width:7%; left:71.6%; top:40%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="mars" style="width:7%; left:42%; top:70%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="jupiter" style="width:11%; left:75.5%; top:58.5%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="saturn" style="width:10%; left:18%; top:43%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="uranus" style="width:8%; left:81.2%; top:19%" onclick="printInformation(this.name)"></button>
-                <button class="planet" name="neptune" style="width:8.5%; left:10%; top:82%" onclick="printInformation(this.name)"></button>
+                <button class="infoButton planet" name="mercury" style="width:4.8%; left:61.25%; top:52%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="sun" style="width:16%; left:50.15%; top:51.5%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="venus" style="width:7%; left:33%; top:56%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="earth" style="width:7%; left:71.6%; top:40%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="mars" style="width:7%; left:42%; top:70%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="jupiter" style="width:11%; left:75.5%; top:58.5%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="saturn" style="width:10%; left:18%; top:43%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="uranus" style="width:8%; left:81.2%; top:19%" onclick="showInformation(this.name)"></button>
+                <button class="infoButton planet" name="neptune" style="width:8.5%; left:10%; top:82%" onclick="showInformation(this.name)"></button>
+                <img class="infoButton" id="spaceship" name="human" src="spaceship.png" style="width:4%; transform:rotate(-50deg); left:73%; top:25%; border-radius:50%" onclick="showAstronaut(); showInformation(this.name);">
+                <img class="infoButton" id="astronaut" name="human" src="astronaut.png" style="width:4%; transform:rotate(10deg); left:73%; top:22%; opacity:0; transition: all ease-in-out 0.5s" onclick="if (this.style.opacity == 1) {showAstronaut(); showInformation(this.name);}">
             </div>
-            <div id="info">
-                <button id="closeButton" style="position:fixed" onclick="printInformation(null)">X</button>
-                <h1 id="title">제목</h1>
-                <img id="image" src="">
-                <ui id="list">
-                    <li>온도</li>
-                    <li>지름</li>
-                    <li>중력</li>
-                    <li>구성 성분</li>
-                    <li>공전 주기</li>
-                    <li>자전 주기</li>
-                    <li>추가 정보</li>
-                    <li>거주 가능성</li>
-                </ui>
+            <div id="infoTab">
+                <button id="closeButton" onclick="showInformation(null)">X</button>
+                <div id="info">
+                    <h1 id="title">제목</h1>
+                    <img id="image" src="">
+                    <ui id="list">
+                        <li>온도 <button class="change" onclick="changeTemperature(this)">(°C)</button></li>
+                        <li>지름</li>
+                        <li>중력</li>
+                        <li>구성 성분</li>
+                        <li>공전 주기</li>
+                        <li>자전 주기</li>
+                        <li>추가 정보</li>
+                        <li>거주 가능성</li>
+                    </ui>
+                </div>
             </div>
         </div>
     </body>
