@@ -24,11 +24,6 @@ body, html {
     overflow:auto;
     background-color:white;
     transition: all ease-in-out 0.5s;
-    -ms-overflow-style:none;
-    scrollbar-width:none;
-}
-#info::-webkit-scrollbar {
-    display:none;
 }
 #imageBox {
     position:relative;
@@ -39,6 +34,7 @@ body, html {
 li {
     word-break:keep-all;
     font-size:1rem;
+    display:inline-block;
 }
 #closeButton {
     color:gray;
@@ -58,6 +54,7 @@ li {
     margin-left: auto;
     margin-right: auto;
     border-style:solid;
+    padding:10px;
 }
 /* 세로로 길 때*/
 @media (max-aspect-ratio:1317/798) {
@@ -105,9 +102,11 @@ li {
         width:10%;
         aspect-ratio:1;
     }
-}
-@media (pointer: coarse) {
-    html, button {
-        font-size:24pt;
+    #info {
+        -ms-overflow-style:none;
+        scrollbar-width:none;
+    }
+    #info::-webkit-scrollbar {
+        display:none;
     }
 }
