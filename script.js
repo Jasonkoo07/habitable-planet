@@ -288,13 +288,15 @@ function changeTemperature() {
 		list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature(this)\">(K)</button> " + selected.absolute_temperature;
 	}
 }
-function showAstronaut() {
-	if (astronaut.style.opacity == 0) {
-		astronaut.style.opacity = 1;
-		openTab("human");
-	}
-	else {
-		astronaut.style.opacity = 0;
-		closeTab();
+function showAstronaut(a) {
+	if (a != "astronaut" || astronaut.style.opacity == 1) {
+		if (astronaut.style.opacity == 0) {
+			astronaut.style.opacity = 1;
+			openTab("human");
+		}
+		else {
+			astronaut.style.opacity = 0;
+			closeTab();
+		}
 	}
 }
