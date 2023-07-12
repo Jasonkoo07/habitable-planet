@@ -156,7 +156,7 @@ window.onload = function () {
 	list = document.getElementById("list").children;
 	astronaut = document.getElementById("astronaut");
 	temperature = "absolute";
-	if (matchMedia("all and (max-aspect-ratio:1)").matches) {
+	if (matchMedia("all and (max-aspect-ratio:4/3)").matches) {
 		openLeft = "0";
 		openTop = "calc(-100vw * 798 / 1317 + 25vh)";
 		closeLeft = "0";
@@ -176,7 +176,7 @@ window.onload = function () {
 	}
 }
 window.onresize = function() {
-	if (matchMedia("all and (max-aspect-ratio:1)").matches) {
+	if (matchMedia("all and (max-aspect-ratio:4/3)").matches) {
 		openLeft = "0";
 		openTop = "calc(-100vw * 798 / 1317 + 25vh)";
 		closeLeft = "0";
