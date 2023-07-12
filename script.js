@@ -9,7 +9,7 @@ var sun = {
 	composition: null,
 	orbital_period: null,
 	rotation_period: null,
-	habitability: false
+	habitability: "높은 온도와 중력으로 인해 인간 거주 불가"
 };
 var mercury = {
 	name: "Mercury",
@@ -22,7 +22,7 @@ var mercury = {
 	composition: "금속 70%, 이산화규소 30%",
 	orbital_period: "176일",
 	rotation_period: "58일",
-	habitability: false
+	habitability: "대기가 존재하지 않아 운석의 충돌이 잦고 일교차가 커 인간 거주 불가"
 };
 var venus = {
 	name: "Venus",
@@ -35,7 +35,7 @@ var venus = {
 	composition: "이산화탄소 (대기 96%), 극소량의 물 존재",
 	orbital_period: "225일",
 	rotation_period: "243일",
-	habitability: false
+	habitability: "높은 기압, 강한 풍압, 적은 자기장으로 인해 인간 거주 불리, 하지만 현무암질의 평원이 있고, 지구와 중력이 유사하여 단점을 해결하면 테라포밍 혹은 공중도시를 통해 거주 가능"
 };
 var earth = {
 	name: "Earth",
@@ -48,7 +48,7 @@ var earth = {
 	composition: null,
 	orbital_period: "365일",
 	rotation_period: "1일",
-	habitability: true
+	habitability: "인간 거주 가능"
 };
 var mars = {
 	name: "Mars",
@@ -61,7 +61,7 @@ var mars = {
 	composition: "이산화탄소 (대기의 95%, 화성대기의 메탄존재), 현무암, 안산암",
 	orbital_period: "687일",
 	rotation_period: "1일 37분",
-	habitability: false
+	habitability: "낮은 중력과 기압, 지구와 다른 대기 구정, 자기장의 부재로 인해 인간 거주 불리, 테라포밍 가능"
 };
 var jupiter = {
 	name: "Jupiter",
@@ -74,7 +74,7 @@ var jupiter = {
 	composition: "대기 구성 (주로 수소,헬륨 구성 / 암모니아, 메탄)",
 	orbital_period: "12년",
 	rotation_period: "9시간 56분",
-	habitability: false
+	habitability: "강한 방사능, 대기로 이루어진 표면, 강한 중력으로 인해 인간 거주 불가"
 };
 var saturn = {
 	name: "Saturn",
@@ -87,7 +87,7 @@ var saturn = {
 	composition: "대기 구성 (메탄, 암모니아, 에탄, 헬륨, 수소분자)",
 	orbital_period: "29년",
 	rotation_period: "10시간 34분",
-	habitability: false
+	habitability: "강력한 바람, 기체형 행성이라는 점으로 인해 인간 거주 불가, 하지만 토성의 위성인 타이탄에서는 테라포밍을 통해 거주 가능"
 };
 var uranus = {
 	name: "Uranus",
@@ -100,7 +100,7 @@ var uranus = {
 	composition: "대기 구성 (수소 83%, 헬륨 15%, 메탄. 2%)",
 	orbital_period: "84년",
 	rotation_period: "17시간 14분",
-	habitability: false
+	habitability: "태양과의 거리로 인한 낮은 온도, 기체형 행성이라는 점으로 인해 인간 거주 불가"
 };
 var neptune = {
 	name: "Neptune",
@@ -113,7 +113,7 @@ var neptune = {
 	composition: "대기 구성 (수소 80%, 헬륨 19%, 에탄, 메탄)",
 	orbital_period: "165년",
 	rotation_period: "16시간 6분",
-	habitability: false
+	habitability: "불안정한 대기, 매우 낮은 온도, 기체형 행성이라는 점으로 인해 인간 거주 불가"
 };
 var planetInfo = new Map([
 	["sun", sun],["mercury", mercury],["venus", venus],["earth", earth],["mars", mars],
@@ -171,7 +171,7 @@ function openTab(a) {
 	list[3].innerHTML = "<strong>표면 구성</strong> " + selected.composition;
 	list[4].innerHTML = "<strong>공전 주기</strong> " + selected.orbital_period;
 	list[5].innerHTML = "<strong>자전 주기</strong> " + selected.rotation_period;
-	list[6].innerHTML = "<strong>거주 가능성</strong> " + (selected.habitability ? "O" : "X");
+	list[6].innerHTML = "<strong>거주 가능성</strong> " + selected.habitability;
 	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 25vh)";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 75vw)";
 }
