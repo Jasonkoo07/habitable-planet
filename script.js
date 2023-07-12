@@ -9,6 +9,8 @@ var sun = {
 	composition: null,
 	orbital_period: null,
 	rotation_period: null,
+	detail_title: "태양 플레어",
+	detail_content: "태양 표면 위의 거대한 폭발 현상, 몇 분 만에 물질을 수백만 도로 가열, 10억 메가톤 이상의 에너지 방출",
 	habitability: "높은 온도와 중력으로 인해 인간 거주 불가"
 };
 var mercury = {
@@ -22,6 +24,8 @@ var mercury = {
 	composition: "금속 70%, 이산화규소 30%",
 	orbital_period: "176일",
 	rotation_period: "58일",
+	detail_title: "수성의 대기",
+	detail_content: "대기 희박, 가스층(수소, 헬륨, 나트륨, 칼륨, 칼슘으로 구성) 존재",
 	habitability: "대기가 존재하지 않아 운석의 충돌이 잦고 일교차가 커 인간 거주 불가"
 };
 var venus = {
@@ -34,7 +38,7 @@ var venus = {
 	gravity: "8.87m/s² (지구 중력의 약 9/10배)",
 	composition: "이산화탄소 (대기 96%), 극소량의 물 존재",
 	orbital_period: "225일",
-	rotation_period: "243일",
+	rotation_period: "243일 (역방향 자전)",
 	habitability: "높은 기압, 강한 풍압, 적은 자기장으로 인해 인간 거주 불리, 하지만 현무암질의 평원이 있고, 지구와 중력이 유사하여 단점을 해결하면 테라포밍 혹은 공중도시를 통해 거주 가능"
 };
 var earth = {
@@ -48,6 +52,8 @@ var earth = {
 	composition: null,
 	orbital_period: "365일",
 	rotation_period: "1일",
+	detail_title: "인간",
+	detail_content: "사람이 견딜 수 있는 중력가속도의 크기는 0.1초 동안은 45G, 1초 동안은 10G, 15초 동안은 5G (지구의 중력은 1G)",
 	habitability: "인간 거주 가능"
 };
 var mars = {
@@ -61,6 +67,8 @@ var mars = {
 	composition: "이산화탄소 (대기의 95%, 화성대기의 메탄존재), 현무암, 안산암",
 	orbital_period: "687일",
 	rotation_period: "1일 37분",
+	detail_title: "화성의 극지방",
+	detail_content: "물, 이산화탄소로 이루어진 얼음으로 된 극관",
 	habitability: "낮은 중력과 기압, 지구와 다른 대기 구정, 자기장의 부재로 인해 인간 거주 불리, 테라포밍 가능"
 };
 var jupiter = {
@@ -74,6 +82,8 @@ var jupiter = {
 	composition: "대기 구성 (주로 수소,헬륨 구성 / 암모니아, 메탄)",
 	orbital_period: "12년",
 	rotation_period: "9시간 56분",
+	detail_title: "목성의 대적반",
+	detail_content: "목성의 소용돌이, 지구보다 큰 크기로 대기가 반시계 방향으로 순환 (풍속 100m/s)",
 	habitability: "강한 방사능, 대기로 이루어진 표면, 강한 중력으로 인해 인간 거주 불가"
 };
 var saturn = {
@@ -87,6 +97,8 @@ var saturn = {
 	composition: "대기 구성 (메탄, 암모니아, 에탄, 헬륨, 수소분자)",
 	orbital_period: "29년",
 	rotation_period: "10시간 34분",
+	detail_title: "토성의 위성, 타이탄",
+	detail_content: "바다가 있고 대기현상이 일어나는 위성, 유기물이 풍부하여 생명체의 존재 가능성이 있고 모습이 원시 지구와 매우 유사",
 	habitability: "강력한 바람, 기체형 행성이라는 점으로 인해 인간 거주 불가, 하지만 토성의 위성인 타이탄에서는 테라포밍을 통해 거주 가능"
 };
 var uranus = {
@@ -100,6 +112,8 @@ var uranus = {
 	composition: "대기 구성 (수소 83%, 헬륨 15%, 메탄. 2%)",
 	orbital_period: "84년",
 	rotation_period: "17시간 14분",
+	detail_title: "천왕성의 위성",
+	detail_content: "타이타니아 (Titania), 오베론 (Oberon), 아리엘 (Ariel), 엄브리엘 (Umbriel), 미란다 (Miranda)",
 	habitability: "태양과의 거리로 인한 낮은 온도, 기체형 행성이라는 점으로 인해 인간 거주 불가"
 };
 var neptune = {
@@ -113,6 +127,8 @@ var neptune = {
 	composition: "대기 구성 (수소 80%, 헬륨 19%, 에탄, 메탄)",
 	orbital_period: "165년",
 	rotation_period: "16시간 6분",
+	detail_title: "해왕성의 위성, 트리톤 (Triton)",
+	detail_content: "달보다 큼, 역행을 하는 위성, 대기 존재",
 	habitability: "불안정한 대기, 매우 낮은 온도, 기체형 행성이라는 점으로 인해 인간 거주 불가"
 };
 var planetInfo = new Map([
@@ -125,12 +141,14 @@ var title;
 var image;
 var list;
 var temperature = "absolute"
+var astronaut;
 
 window.onload = function () {
 	infoTab = document.getElementById("info");
 	title = document.getElementById("title");
 	image = document.getElementById("image");
 	list = document.getElementById("list").children;
+	astronaut = document.getElementById("astronaut");
 }
 window.onresize = function() {
 	infoTab.style.left = "0";
@@ -158,20 +176,23 @@ function openTab(a) {
 	selected = planetInfo.get(a);
 	title.innerText = selected.korean_name + " " + selected.name;
 	image.src = selected.image;
-	for (var i = 0; i < 7; i++) list[i].style.display = "inline-block";
+	for (var i = 0; i < 8; i++) list[i].style.display = "inline-block";
 	if (selected.absolute_temperature == null || selected.celsius_temperature == null) list[0].style.display = "none";
 	if (selected.diameter == null) list[1].style.display = "none";
 	if (selected.gravity == null) list[2].style.display = "none";
 	if (selected.composition == null) list[3].style.display = "none";
 	if (selected.orbital_period == null) list[4].style.display = "none";
 	if (selected.rotation_period == null) list[5].style.display = "none";
+	if (selected.detail_title == null || selected.detail_content == null) list[6].style.display = "none";
+	if (selected.habitability == null) list[5].style.display = "none";
 	list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature()\">" + (temperature == "absolute" ? "(K)" : "(°C)") + "</button> " + (temperature == "absolute" ? selected.absolute_temperature : selected.celsius_temperature);
 	list[1].innerHTML = "<strong>지름</strong> " + selected.diameter;
 	list[2].innerHTML = "<strong>중력</strong> " + selected.gravity;
 	list[3].innerHTML = "<strong>표면 구성</strong> " + selected.composition;
 	list[4].innerHTML = "<strong>공전 주기</strong> " + selected.orbital_period;
 	list[5].innerHTML = "<strong>자전 주기</strong> " + selected.rotation_period;
-	list[6].innerHTML = "<strong>거주 가능성</strong> " + selected.habitability;
+	list[6].innerHTML = "<strong>" + selected.detail_title + "</strong> " + selected.detail_content;
+	list[7].innerHTML = "<strong>거주 가능성</strong> " + selected.habitability;
 	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 25vh)";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 75vw)";
 }
@@ -180,7 +201,6 @@ function closeTab() {
 	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 100vh)";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 100vw)";
 }
-
 function changeTemperature() {
 	if (temperature == "absolute") {
 		temperature = "celsius";
@@ -190,4 +210,8 @@ function changeTemperature() {
 		temperature = "absolute"
 		list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature(this)\">(K)</button> " + selected.absolute_temperature;
 	}
+}
+function showAstronaut() {
+	if (astronaut.style.opacity == 0) astronaut.style.opacity = 1;
+	else astronaut.style.opacity = 0;
 }
