@@ -155,11 +155,15 @@ window.onload = function () {
 	astronaut = document.getElementById("astronaut");
 }
 window.onresize = function() {
-	infoTab.style.left = "0";
-	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) {
+	if (matchMedia("all and (max-aspect-ratio:1)").matches) {
 		infoTab.style.left = "0"
 		if (selected == null) infoTab.style.top = "calc(-100vw * 798 / 1317 + 100vh)";
 		else infoTab.style.top = "calc(-100vw * 798 / 1317 + 25vh)";
+	}
+	else if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) {
+		infoTab.style.top = "0"
+		if (selected == null) infoTab.style.left = "0";
+		else infoTab.style.left = "-25vw";
 	}
 	else {
 		infoTab.style.top = "0"
@@ -233,13 +237,15 @@ function openTab(a) {
 		</ul>
 		`
 	}
-	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 25vh)";
+	if (matchMedia("all and (max-aspect-ratio:1)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 25vh)";
+	else if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.left = "-25vw";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 75vw)";
 }
 function closeTab() {
 	selected = null;
 	astronaut.style.opacity = 0;
-	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 100vh)";
+	if (matchMedia("all and (max-aspect-ratio:1)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 100vh)";
+	else if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.left = "0";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 100vw)";
 }
 function changeTemperature() {
