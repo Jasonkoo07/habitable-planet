@@ -6,9 +6,9 @@ var sun = {
 	celsius_temperature: "중심부: 1500만°C, 표면 온도: 5726°C",
 	diameter: "139만km (지구 지름의 109배)",
 	gravity: "274m/s² (지구 중력의 27배)",
-	composition: "test",
-	orbital_period: "test",
-	rotation_period: "test"
+	composition: null,
+	orbital_period: null,
+	rotation_period: null
 };
 var mercury = {
 	name: "Mercury",
@@ -38,11 +38,11 @@ var earth = {
 	name: "Earth",
 	korean_name: "지구",
 	image: "planetImage/earth.jpg",
-	absolute_temperature: "test",
-	celsius_temperature: "test",
+	absolute_temperature: null,
+	celsius_temperature: null,
 	diameter: "12,742km",
 	gravity: "9.807m/s²",
-	composition: "test",
+	composition: null,
 	orbital_period: "365일",
 	rotation_period: "1일"
 };
@@ -149,6 +149,13 @@ function openTab(a) {
 	selected = planetInfo.get(a);
 	title.innerText = selected.korean_name + " " + selected.name;
 	image.src = selected.image;
+	for (var i = 0; i < 6; i++) list[i].style.display = "inline-block";
+	if (selected.absolute_temperature == null || selected.celsius_temperature == null) list[0].style.display = "none";
+	if (selected.diameter == null) list[1].style.display = "none";
+	if (selected.gravity == null) list[2].style.display = "none";
+	if (selected.composition == null) list[3].style.display = "none";
+	if (selected.orbital_period == null) list[4].style.display = "none";
+	if (selected.rotation_period_period == null) list[5].style.display = "none";
 	list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature()\">" + (temperature == "absolute" ? "(K)" : "(°C)") + "</button> " + (temperature == "absolute" ? selected.absolute_temperature : selected.celsius_temperature);
 	list[1].innerHTML = "<strong>지름</strong> " + selected.diameter;
 	list[2].innerHTML = "<strong>중력</strong> " + selected.gravity;
@@ -174,4 +181,3 @@ function changeTemperature() {
 		list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature(this)\">(K)</button> " + selected.absolute_temperature;
 	}
 }
-
