@@ -69,18 +69,18 @@ li {
     border-style:solid;
     padding:10px;
 }
-/* 세로로 길 때*/
-@media (max-aspect-ratio:1317/798) {
+/*스마트폰, 태블릿 세로*/
+@media (max-aspect-ratio:1) {
     #imageBox {
         width:100vw;
         height:calc(100vw * 798 / 1317);
         background-size:cover;
     }
+    #grid {
+        grid-template-rows:1fr 1fr;
+    }
     #image {
         width:50%;
-    }
-    #grid {
-        grid-template-rows:calc(100vw * 798 / 1317) 1fr;
     }
     #info {
         top:calc(-100vw * 798 / 1317 + 100vh);
@@ -97,18 +97,42 @@ li {
         width:100%;
     }
 }
-/*가로로 길 때*/
+/*태블릿 가로*/
+@media (min-aspect-ratio:1) and (max-aspect-ratio:1317/798) {
+    #imageBox {
+        width:100vw;
+        height:calc(100vw * 798 / 1317);
+        background-size:cover;
+    }
+    #grid {
+        grid-template-columns:1fr 1fr;
+    }
+    #image {
+        width:90%;
+    }
+    #info {
+        left:0;
+        width:25vw;
+        border-top-left-radius:10px;
+        border-bottom-left-radius:10px;
+    }
+    #closeButton {
+        width:10%;
+        aspect-ratio:1;
+    }
+}
+/*스마트폰 가로, PC*/
 @media (min-aspect-ratio:1317/798) {
     #imageBox {
         width:calc(100vh * 1317 / 798);
         height:100vh;
         background-size:contain;
     }
+    #grid {
+        grid-template-columns:1fr 1fr;
+    }
     #image {
         width:90%;
-    }
-    #grid {
-        grid-template-columns:calc(100vh * 1317 / 798) 1fr;
     }
     #info {
         left:calc(-100vh * 1317 / 798 + 100vw);
@@ -121,6 +145,7 @@ li {
         aspect-ratio:1;
     }
 }
+
 @media (pointer: coarse) {
     html, button {
         font-size:24pt;
