@@ -4,49 +4,41 @@ body, html {
     margin:0;
     background-color:navy;
 }
-.deco {
+.planet, .deco {
     position:absolute;
-    transition: all ease-in-out 0.5s;
-}
-#spaceship {
-    border:0;
-    border-style:dotted;
-    border-radius:50%;
-}
-#astronaut {
-    opacity:0;
 }
 .planet {
-    position:absolute;
-    background-color:rgba(0, 0, 0, 0);
-    border:0;
-    aspect-ratio: 1;
+    opacity:0;
+    aspect-ratio:1;
     border-radius:50%;
-    border-style:dotted;
     transform:translate(-50%, -50%);
 }
+.deco {
+    transition: all ease-in-out 0.5s;
+}
+
 #grid {
     display:grid;
-    width:100vw;
-    height:100vh;
+    width:100%;
+    height:100%;
     overflow:hidden;
     margin:0;
 }
-#info {
+#imageBox, #info {
     position:relative;
+}
+#imageBox {
+    background-image:url("solarSystem.jpg");
+    background-repeat:no-repeat;
+}
+#info {
     background-color:white;
     transition: all ease-in-out 0.5s;
     overflow-y:scroll;
 }
-#imageBox {
-    position:relative;
-    background-image:url("solarSystem.jpg");
-    background-repeat:no-repeat;
-    display:inline-block;
-}
+
 li {
     word-break:keep-all;
-    font-size:1rem;
     display:inline-block;
 }
 #closeButton {
@@ -55,12 +47,11 @@ li {
     border-radius:5px;
 }
 #closeButton, #title, #image, li {
-    margin:10px;
+    margin:0.5rem;
 }
 .change {
     height:1.5rem;
-    aspect-ratio:1.5;
-    padding:0;
+    aspect-ratio:2;
 }
 #image {
     display: block;
@@ -108,7 +99,7 @@ li {
         grid-template-columns:1fr 1fr;
     }
     #image {
-        width:90%;
+        width:80%;
     }
     #info {
         left:0;
