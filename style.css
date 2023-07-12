@@ -20,7 +20,7 @@ body, html {
     border-style:dotted;
     transform:translate(-50%, -50%);
 }
-.grid {
+#grid {
     display:grid;
     width:100vw;
     height:100vh;
