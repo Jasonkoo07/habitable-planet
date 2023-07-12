@@ -74,9 +74,14 @@ li {
         height:75vh;
         border-top-left-radius:10px;
         border-top-right-radius:10px;
+        -ms-overflow-style:none;
+        scrollbar-width:none;
     }
     #closeButton {
         width:100%;
+    }
+    #info::-webkit-scrollbar {
+        display:none;
     }
 }
 /*가로로 길 때*/
@@ -102,11 +107,10 @@ li {
         width:10%;
         aspect-ratio:1;
     }
-    #info {
-        -ms-overflow-style:none;
-        scrollbar-width:none;
-    }
-    #info::-webkit-scrollbar {
-        display:none;
+}
+
+@media (pointer: coarse) {
+    html, button {
+        font-size:24pt;
     }
 }
