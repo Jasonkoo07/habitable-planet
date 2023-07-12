@@ -4,6 +4,13 @@ body, html {
     margin:0;
     background-color:navy;
 }
+.deco {
+    position:absolute;
+    transition: all ease-in-out 0.5s;
+}
+#astronaut {
+    opacity:0;
+}
 .planet {
     position:absolute;
     background-color:rgba(0, 0, 0, 0);
