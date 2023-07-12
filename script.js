@@ -52,8 +52,6 @@ var earth = {
 	composition: null,
 	orbital_period: "365일",
 	rotation_period: "1일",
-	detail_title: "인간",
-	detail_content: "사람이 견딜 수 있는 중력가속도의 크기는 0.1초 동안은 45G, 1초 동안은 10G, 15초 동안은 5G (지구의 중력은 1G)",
 	habitability: "인간 거주 가능"
 };
 var mars = {
@@ -131,9 +129,14 @@ var neptune = {
 	detail_content: "달보다 큼, 역행을 하는 위성, 대기 존재",
 	habitability: "불안정한 대기, 매우 낮은 온도, 기체형 행성이라는 점으로 인해 인간 거주 불가"
 };
+var human = {
+	name: "Human",
+	korean_name: "인간",
+	image: "astronaut.png"
+}
 var planetInfo = new Map([
 	["sun", sun],["mercury", mercury],["venus", venus],["earth", earth],["mars", mars],
-	["jupiter", jupiter],["saturn", saturn],["uranus", uranus],["neptune", neptune]
+	["jupiter", jupiter],["saturn", saturn],["uranus", uranus],["neptune", neptune], ["human", human]
 ]);
 var selected;
 var infoTab;
@@ -177,23 +180,58 @@ function openTab(a) {
 	selected = planetInfo.get(a);
 	title.innerText = selected.korean_name + " " + selected.name;
 	image.src = selected.image;
-	for (var i = 0; i < 8; i++) list[i].style.display = "inline-block";
-	if (selected.absolute_temperature == null || selected.celsius_temperature == null) list[0].style.display = "none";
-	if (selected.diameter == null) list[1].style.display = "none";
-	if (selected.gravity == null) list[2].style.display = "none";
-	if (selected.composition == null) list[3].style.display = "none";
-	if (selected.orbital_period == null) list[4].style.display = "none";
-	if (selected.rotation_period == null) list[5].style.display = "none";
-	if (selected.detail_title == null || selected.detail_content == null) list[6].style.display = "none";
-	if (selected.habitability == null) list[5].style.display = "none";
-	list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature()\">" + (temperature == "absolute" ? "(K)" : "(°C)") + "</button> " + (temperature == "absolute" ? selected.absolute_temperature : selected.celsius_temperature);
-	list[1].innerHTML = "<strong>지름</strong> " + selected.diameter;
-	list[2].innerHTML = "<strong>중력</strong> " + selected.gravity;
-	list[3].innerHTML = "<strong>표면 구성</strong> " + selected.composition;
-	list[4].innerHTML = "<strong>공전 주기</strong> " + selected.orbital_period;
-	list[5].innerHTML = "<strong>자전 주기</strong> " + selected.rotation_period;
-	list[6].innerHTML = "<strong>" + selected.detail_title + "</strong> " + selected.detail_content;
-	list[7].innerHTML = "<strong>거주 가능성</strong> " + selected.habitability;
+	if (a != "human") {
+		for (var i = 0; i < 8; i++) list[i].style.display = "inline-block";
+		if (selected.absolute_temperature == null || selected.celsius_temperature == null) list[0].style.display = "none";
+		if (selected.diameter == null) list[1].style.display = "none";
+		if (selected.gravity == null) list[2].style.display = "none";
+		if (selected.composition == null) list[3].style.display = "none";
+		if (selected.orbital_period == null) list[4].style.display = "none";
+		if (selected.rotation_period == null) list[5].style.display = "none";
+		if (selected.detail_title == null || selected.detail_content == null) list[6].style.display = "none";
+		if (selected.habitability == null) list[7].style.display = "none";
+		list[0].innerHTML = "<strong>온도</strong> <button class=\"change\" onclick=\"changeTemperature()\">" + (temperature == "absolute" ? "(K)" : "(°C)") + "</button> " + (temperature == "absolute" ? selected.absolute_temperature : selected.celsius_temperature);
+		list[1].innerHTML = "<strong>지름</strong> " + selected.diameter;
+		list[2].innerHTML = "<strong>중력</strong> " + selected.gravity;
+		list[3].innerHTML = "<strong>표면 구성</strong> " + selected.composition;
+		list[4].innerHTML = "<strong>공전 주기</strong> " + selected.orbital_period;
+		list[5].innerHTML = "<strong>자전 주기</strong> " + selected.rotation_period;
+		list[6].innerHTML = "<strong>" + selected.detail_title + "</strong> " + selected.detail_content;
+		list[7].innerHTML = "<strong>거주 가능성</strong> " + selected.habitability;
+	}
+	else {
+		list[0].style.display = "inline-block";
+		for (var i = 1; i < 8; i++) list[i].style.display = "none";
+		list[0].innerHTML = `<strong>방사능 피폭선량에 따른 증상</strong><br>
+		<ul>
+		<li>2sv: 5%의 사람 사망</li>
+		<li>4sv: 30일간 50%사람 사망</li>
+		<li>6sv: 14일간 90%사람 사망</li>
+		<li>8sv: 100%의 사람 사망</li>
+		</ul>
+		<strong>인간이 버티는 온도(더위)</strong><br>
+		<ul>
+		<li>습도가 높을 경우: 32°C가 넘어갈 경우 치명적인 온도</li>
+		<li>습도가 극단적으로 낮은 경우: 50°C가 되어야 치명적인 온도</li>
+		</ul>
+		<strong>인간이 버티는 온도(추위)</strong><br>
+		<ul>
+		<li>인간의 체온이 33°C로 떨어질 경우 저체온증로 인한 사망 가능</li>
+		<li>인간의 체온이 30°C로 떨어질 경우 가사상태 => 사망</li>
+		<li>외부온도가 -47°C가 되면 얼굴에 얼음막 형성 => 동상</li>
+		</ul>
+		<strong>사람이 견딜 수 있는 중력가속도의 크기</strong><br>
+		<ul>
+		<li>0.1초: 45G</li>
+		<li>1초: 10G</li>
+		<li>15초: 5G</li>
+		</ul>
+		<strong>사람 뼈가 견딜수 있는 무게</strong><br>
+		<ul>
+		<li>in³(세제곱인치)당 8,626kg</li>
+		</ul>
+		`
+	}
 	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 25vh)";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 75vw)";
 }
@@ -213,6 +251,12 @@ function changeTemperature() {
 	}
 }
 function showAstronaut() {
-	if (astronaut.style.opacity == 0) astronaut.style.opacity = 1;
-	else astronaut.style.opacity = 0;
+	if (astronaut.style.opacity == 0) {
+		astronaut.style.opacity = 1;
+		openTab("human");
+	}
+	else {
+		astronaut.style.opacity = 0;
+		closeTab();
+	}
 }
