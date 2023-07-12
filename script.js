@@ -8,7 +8,8 @@ var sun = {
 	gravity: "274m/s² (지구 중력의 27배)",
 	composition: null,
 	orbital_period: null,
-	rotation_period: null
+	rotation_period: null,
+	habitability: false
 };
 var mercury = {
 	name: "Mercury",
@@ -20,7 +21,8 @@ var mercury = {
 	gravity: "3.7m/s² (지구 중력의 약 1/3배)",
 	composition: "금속 70%, 이산화규소 30%",
 	orbital_period: "176일",
-	rotation_period: "58일"
+	rotation_period: "58일",
+	habitability: false
 };
 var venus = {
 	name: "Venus",
@@ -32,7 +34,8 @@ var venus = {
 	gravity: "8.87m/s² (지구 중력의 약 9/10배)",
 	composition: "이산화탄소 (대기 96%), 극소량의 물 존재",
 	orbital_period: "225일",
-	rotation_period: "243일"
+	rotation_period: "243일",
+	habitability: false
 };
 var earth = {
 	name: "Earth",
@@ -44,7 +47,8 @@ var earth = {
 	gravity: "9.807m/s²",
 	composition: null,
 	orbital_period: "365일",
-	rotation_period: "1일"
+	rotation_period: "1일",
+	habitability: true
 };
 var mars = {
 	name: "Mars",
@@ -56,7 +60,8 @@ var mars = {
 	gravity: "3.71m/s² (지구 중력의 약 1/3배)",
 	composition: "이산화탄소 (대기의 95%, 화성대기의 메탄존재), 현무암, 안산암",
 	orbital_period: "687일",
-	rotation_period: "1일 37분"
+	rotation_period: "1일 37분",
+	habitability: false
 };
 var jupiter = {
 	name: "Jupiter",
@@ -68,7 +73,8 @@ var jupiter = {
 	gravity: "24.79m/s² (지구 중력의 약 5/2배)",
 	composition: "대기구성 (주로 수소,헬륨 구성 / 암모니아, 메탄)",
 	orbital_period: "12년",
-	rotation_period: "9시간 56분"
+	rotation_period: "9시간 56분",
+	habitability: false
 };
 var saturn = {
 	name: "Saturn",
@@ -80,7 +86,8 @@ var saturn = {
 	gravity: "10.44m/s² (지구 중력의 약 10/9배)",
 	composition: "대기구성 (메탄, 암모니아, 에탄, 헬륨, 수소분자)",
 	orbital_period: "29년",
-	rotation_period: "10시간 34분"
+	rotation_period: "10시간 34분",
+	habitability: false
 };
 var uranus = {
 	name: "Uranus",
@@ -92,7 +99,8 @@ var uranus = {
 	gravity: "8.87m/s² (지구 중력의 약 8/9배)",
 	composition: "대기구성 (수소 83%, 헬륨 15%, 메탄. 2%)",
 	orbital_period: "84년",
-	rotation_period: "17시간 14분"
+	rotation_period: "17시간 14분",
+	habitability: false
 };
 var neptune = {
 	name: "Neptune",
@@ -104,7 +112,8 @@ var neptune = {
 	gravity: "11.15m/s² (지구 중력의 약 11/10배)",
 	composition: "대기구성 (수소 80%, 헬륨 19%, 에탄, 메탄)",
 	orbital_period: "165년",
-	rotation_period: "16시간 6분"
+	rotation_period: "16시간 6분",
+	habitability: false
 };
 var planetInfo = new Map([
 	["sun", sun],["mercury", mercury],["venus", venus],["earth", earth],["mars", mars],
@@ -162,6 +171,7 @@ function openTab(a) {
 	list[3].innerHTML = "<strong>표면 구성</strong> " + selected.composition;
 	list[4].innerHTML = "<strong>공전 주기</strong> " + selected.orbital_period;
 	list[5].innerHTML = "<strong>자전 주기</strong> " + selected.rotation_period;
+	list[6].innerHTML = "<strong>거주 가능성</strong> " + (selected.habitability ? "O" : "X");
 	if (matchMedia("all and (max-aspect-ratio:1317/798)").matches) infoTab.style.top = "calc(-100vw * 798 / 1317 + 25vh)";
 	else infoTab.style.left = "calc(-100vh * 1317 / 798 + 75vw)";
 }
