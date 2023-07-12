@@ -8,13 +8,18 @@ body, html {
     position:absolute;
     transition: all ease-in-out 0.5s;
 }
+#spaceship {
+    border:0;
+    border-style:dotted;
+    border-radius:50%;
+}
 #astronaut {
     opacity:0;
 }
 .planet {
     position:absolute;
     background-color:rgba(0, 0, 0, 0);
-    border-color:yellow;
+    border:0;
     aspect-ratio: 1;
     border-radius:50%;
     border-style:dotted;
